@@ -1,8 +1,10 @@
-{% extends "post/base.html" %} {% block content %} {% for post in posts%}
+{% extends "post/base.html" %} {% block content %} 
+<h1>Post for {{user}}  ({{page_obj.count}})</h1>
+{% for post in posts%}
 <article class="media content-section">
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-post' post.author %}">{{ post.author }}</a>
+      <a class="mr-2" href="#">{{ post.author }}</a>
       <small class="text-muted">{{ post.posted_on | date:"F d, Y" }}</small>
     </div>
     <h2>

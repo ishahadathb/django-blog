@@ -3,9 +3,17 @@
 {% block content %}
     <article class="media content-section">
       <div class="media-body">
-        <div class="article-metadata">
-          <a class="mr-2" href="#">{{ object.author }}</a>
-          <small class="text-muted">{{ object.posted_on | date:"F d, Y" }}</small>
+        <div class="article-metadata d-flex justify-content-between align-items-center pb-2">
+          <div>
+            <a class="mr-2" href="#">{{ object.author }}</a>
+            <small class="text-muted">{{ object.posted_on | date:"F d, Y" }}</small>
+          </div>
+          <div>
+            {% if object.author == user %}
+            <a href="{% url 'blog-update' object.pk %}" class="btn btn-sm btn-secondary">Update</a>
+            <a href="{% url 'blog-delete' object.pk %}" class="btn btn-sm btn-danger ml-1">Delete</a>
+          {% endif %}
+          </div>
         </div>
         <h2 class="class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content }}</p>
